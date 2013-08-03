@@ -1,11 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-
     <string name="app_name">Layout</string>
     <string name="action_settings">Menuzinho</string>
     <string name="name_label">Nome: </string>
     <string name="see_message">Ver mensagem</string>
     <string name="logo_label">Stonersss</string>
-    <string name="hello_message">Olá, %1$s</string>
-
+    <string name="hello_message">Olá, %1$s!</string>
 </resources>
