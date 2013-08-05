@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Intent Actions</string>
+    <string name="action_settings">MenuBlah</string>
+    <string name="menu_settings">MenuSettingsBlah</string>
+	<string name="title_activity_main">MainActivityBlah</string>
+	<string name="view_site_label">Ver o site do Raul</string>
+	<string name="send_email_label">Enviar email de contato</string>
+	<string name="make_call_label">Fazer Ligacao</string>
+</resources>
