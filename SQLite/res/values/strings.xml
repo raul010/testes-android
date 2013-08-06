@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">SQLite</string>
+    <string name="action_settings">Settings</string>
+    <string name="add">Adicionar</string>
+	<string name="no_notes">Nenhuma Anotação</string>
+	<string name="write_a_note">Escreva uma anotação</string>
+	<string name="save">Salva</string>
+</resources>
