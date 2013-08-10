@@ -29,7 +29,6 @@ public class MainActivity extends Activity {
 		Button customButton = (Button) findViewById(R.id.show_custom_dialog_button);
 		
 		progressButton.setOnClickListener(new OnClickListener() {
-			@SuppressLint("NewApi")
 			@Override
 			public void onClick(View v) {
 				DialogFragment dialog = ProgressDialogFragment.newInstance();
