@@ -1,15 +1,15 @@
 package br.com.codifico.util.enums;
 
 public enum Estado {
-	SAO_PAULO("São Paulo");
+	SAO_PAULO(1);
 	
-	private String estado;
+	private int codEstado;
 	
-	private Estado(String estado) {
-		this.estado = estado;
+	private Estado(int codEstado) {
+		this.codEstado = codEstado;
 	}
 
-	public String getEstado() {
-		return estado;
+	public int getEstado() {
+		return codEstado;
 	}
 }

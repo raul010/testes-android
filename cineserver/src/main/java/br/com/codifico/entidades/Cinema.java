@@ -4,6 +4,8 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
+import javax.ws.rs.Encoded;
+
 
 public class Cinema {
 	private String nome;

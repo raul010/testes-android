@@ -20,7 +20,6 @@ import org.jsoup.select.Elements;
 import br.com.codifico.entidades.Cinema;
 import br.com.codifico.entidades.Endereco;
 import br.com.codifico.entidades.FilmeCartaz;
-import br.com.codifico.entidades.Horario;
 
 public class JsoupUtil {
 	private static int alternaHeader;
@@ -32,7 +31,6 @@ public class JsoupUtil {
 		Cinema cinema = null;
 		Endereco endereco = null;
 		FilmeCartaz filme = null;
-		Horario horario = null;
 
 		PropertyConfigurator.configure(log4jConfigFile);
 
@@ -40,7 +38,7 @@ public class JsoupUtil {
 		Elements elemsBlocoFilmes = null;
 		Document doc = null;
 
-		int qtde = 0;
+		int qtdeCinema = 0;
 		int pagina = 1;
 		boolean ultimaPagina = false;
 
@@ -84,7 +82,7 @@ public class JsoupUtil {
 					if (elemFilmesDia == null) {
 						log.info("Parece que não há sessão na " + diaDaSemana
 								+ url + "?pagina=" + pagina, new Exception());
-						log.info("Passando para próximo dia...");
+						log.info("Passando para próximo dia, se houver...");
 						continue;
 
 					}
@@ -94,7 +92,6 @@ public class JsoupUtil {
 
 					// Totos os filmes (do cinema) do dia que está sendo iterado
 					for (Element elemFilme : elemsFilmes) {
-						horario = new Horario();
 						filme = new FilmeCartaz(i);
 
 						String attrFilme = elemFilme.attr("data-movie");
@@ -103,14 +100,12 @@ public class JsoupUtil {
 								.getElementsByAttribute("data-times");
 
 						for (Element hora : elemsHora) {
-							horario.addHorario(formataEArmazena(hora));
+							filme.addHorario(formataEArmazena(hora));
 						}
 						// JSON - Não utilizado ainda
 						imprime(attrFilme);
 
 						filme.setNome(formataEArmazena(elemFilme));
-						filme.setHorario(horario);
-
 						cinema.addFilme(filme);
 					}
 				}
@@ -118,7 +113,7 @@ public class JsoupUtil {
 
 				contFilme++;
 			}
-			++qtde;
+			++qtdeCinema;
 
 			// último request é feito apos a última página válida
 			if (elemsBlocoCinema.size() == 0) {
@@ -131,7 +126,7 @@ public class JsoupUtil {
 			}
 			System.out.println("Fim da Página " + pagina++ + "\n");
 		}
-		System.out.println(qtde + " Cinemas");
+		System.out.println(qtdeCinema + " Cinemas");
 
 	}
 

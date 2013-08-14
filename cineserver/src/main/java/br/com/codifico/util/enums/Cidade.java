@@ -1,7 +1,7 @@
 package br.com.codifico.util.enums;
 
 public enum Cidade {
-	SAO_PAULO("São Paulo");
+	SAO_PAULO("SP");
 
 	private String estado;
 

@@ -1,12 +1,17 @@
 package br.com.codifico.entidades;
 
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
+
 import br.com.codifico.util.JsoupUtil;
 import br.com.codifico.util.enums.EnumDia;
 
 
 public class FilmeCartaz extends Filme {
 	private EnumDia enumDia;
-	private Horario horario;
+	private List<String> horarios;
+	
 	private String diaSemana;
 	
 	public FilmeCartaz(int diaIteracao) {
@@ -27,16 +32,10 @@ public class FilmeCartaz extends Filme {
 		}
 		diaSemana = JsoupUtil.diaDaSemana(enumDia.getDia());
 		
+		horarios = new ArrayList<String>();
+		
 	}
 
-	public Horario getHorario() {
-		return horario;
-	}
-
-	public void setHorario(Horario horario) {
-		this.horario = horario;
-	}
-	
 	public EnumDia getEnumDia() {
 		return enumDia;
 	}
@@ -44,4 +43,13 @@ public class FilmeCartaz extends Filme {
 	public String getDiaSemana() {
 		return diaSemana;
 	}
+	
+	public List<String> getHorarios() {
+		return Collections.unmodifiableList(horarios);
+	}
+
+	public void addHorario(String horarios) {
+		this.horarios.add(horarios);
+	}
+
 }
