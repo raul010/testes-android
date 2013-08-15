@@ -1,6 +1,5 @@
 package br.com.codifico.model;
 
-import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
@@ -8,27 +7,29 @@ import java.util.List;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
+import javax.persistence.OneToOne;
 import javax.persistence.Transient;
 
+import org.springframework.stereotype.Repository;
+
+@Repository
 @Entity
-public class Cinema implements Serializable {
+public class Cinema {
 	@Transient
 	private String nome;
-	@Transient
+    
+	@OneToOne
 	private Endereco endereco;
-	@Transient
+	
+	@ManyToMany
+	@JoinTable(name="join_cinema_filme")
 	private List<Filme> filmes;
+	
 	@Id @GeneratedValue
 	private int id;
 	
-	public int getId() {
-		return id;
-	}
-
-	public void setId(int id) {
-		this.id = id;
-	}
-
 	public Cinema() {
 		filmes = new ArrayList<Filme>();
 	}

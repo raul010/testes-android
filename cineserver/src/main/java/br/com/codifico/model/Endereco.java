@@ -1,23 +1,27 @@
 package br.com.codifico.model;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
-import javax.persistence.Transient;
 
 import br.com.codifico.util.enums.Cidade;
 import br.com.codifico.util.enums.Estado;
 
 @Entity
 public class Endereco {
-	@Transient
+	@Enumerated(EnumType.STRING)
 	private Cidade cidade;
-	@Transient
-	private Estado estado;
-	@Transient
-	private String dados;
 	@Id @GeneratedValue
 	private int id;
+	
+	@Enumerated(EnumType.STRING)
+	private Estado estado;
+	
+	@Column
+	private String dados;
 	
 	public Cidade getCidade() {
 		return cidade;

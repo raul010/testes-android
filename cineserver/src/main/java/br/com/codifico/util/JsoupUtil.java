@@ -17,15 +17,15 @@ import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
 
+import br.com.codifico.dao.apresentacao.FilmeCartaz;
 import br.com.codifico.model.Cinema;
 import br.com.codifico.model.Endereco;
-import br.com.codifico.view.FilmeCartaz;
 
 public class JsoupUtil {
 	private static int alternaHeader;
 	private static Calendar gc = new GregorianCalendar();
 
-	public static void fazRequestPorCinema(String url) throws IOException {
+	public static void fazRequestNosDados(String url) throws IOException {
 		List<Cinema> listaDeCinemas = new ArrayList<Cinema>();
 
 		Cinema cinema = null;
@@ -74,7 +74,7 @@ public class JsoupUtil {
 				Element elementoComFilmes = elemsBlocoFilmes.get(contFilme);
 
 				// Recupera cada filme (de um cinema), para 3 dias
-				for (int i = 0; i <= 2; i++) {
+				for (int i = 0; i <= 6; i++) {
 					String diaDaSemana = diaDaSemana(i);
 
 					Element elemFilmesDia = elementoComFilmes.select(
