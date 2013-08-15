@@ -26,15 +26,16 @@ public class TestePersistencia {
 	@Test
 	public void test() {
 		//fail("Not yet implemented");
-		System.out.println("foi");
-		EntityManagerFactory factory = null;;
-		try{ 
-			factory = Persistence.createEntityManagerFactory("cineserver-test");
-		}catch (Exception e) {
-			e.printStackTrace();
-		}
+		System.out.println("foi: " + em);
 		
-		factory.close();
+//		EntityManagerFactory factory = null;;
+//		try{ 
+//			factory = Persistence.createEntityManagerFactory("cineserver");
+//		}catch (Exception e) {
+//			e.printStackTrace();
+//		}
+//		
+//		factory.close();
 	}
 
 }

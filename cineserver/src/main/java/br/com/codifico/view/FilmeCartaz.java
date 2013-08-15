@@ -1,17 +1,26 @@
-package br.com.codifico.model;
+package br.com.codifico.view;
 
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
+import br.com.codifico.model.Filme;
 import br.com.codifico.util.JsoupUtil;
 import br.com.codifico.util.enums.EnumDia;
-
 
 public class FilmeCartaz extends Filme {
 	private EnumDia enumDia;
 	private List<String> horarios;
+	int id;
 	
+	public int getId() {
+		return id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
+	}
+
 	private String diaSemana;
 	
 	public FilmeCartaz(int diaIteracao) {

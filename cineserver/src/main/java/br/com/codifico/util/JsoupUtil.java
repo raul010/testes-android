@@ -19,7 +19,7 @@ import org.jsoup.select.Elements;
 
 import br.com.codifico.model.Cinema;
 import br.com.codifico.model.Endereco;
-import br.com.codifico.model.FilmeCartaz;
+import br.com.codifico.view.FilmeCartaz;
 
 public class JsoupUtil {
 	private static int alternaHeader;
