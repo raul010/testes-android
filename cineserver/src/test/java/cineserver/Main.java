@@ -1,6 +1,6 @@
 package cineserver;
 
-import br.com.codifico.entidades.Cinema;
+import br.com.codifico.model.Cinema;
 import br.com.codifico.util.JsoupUtil;
 
 

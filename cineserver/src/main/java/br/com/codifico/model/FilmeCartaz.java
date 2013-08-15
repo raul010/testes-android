@@ -1,4 +1,4 @@
-package br.com.codifico.entidades;
+package br.com.codifico.model;
 
 import java.util.ArrayList;
 import java.util.Collections;

@@ -1,17 +1,34 @@
-package br.com.codifico.entidades;
+package br.com.codifico.model;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
-import javax.ws.rs.Encoded;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.Transient;
 
-
-public class Cinema {
+@Entity
+public class Cinema implements Serializable {
+	@Transient
 	private String nome;
+	@Transient
 	private Endereco endereco;
+	@Transient
 	private List<Filme> filmes;
+	@Id @GeneratedValue
+	private int id;
 	
+	public int getId() {
+		return id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
+	}
+
 	public Cinema() {
 		filmes = new ArrayList<Filme>();
 	}

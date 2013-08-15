@@ -1,11 +1,18 @@
-package br.com.codifico.entidades;
+package br.com.codifico.model;
+
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
 
 import br.com.codifico.util.enums.Genero;
 
+@Entity
 public class Filme {
 	private String nome;
 	private Genero genero;
-
+	@Id @GeneratedValue
+	private int id;
+	
 	public String getNome() {
 		return nome;
 	}
@@ -19,6 +26,14 @@ public class Filme {
 
 	public void setGenero(Genero genero) {
 		this.genero = genero;
+	}
+
+	public int getId() {
+		return id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
 	}
 	
 }
