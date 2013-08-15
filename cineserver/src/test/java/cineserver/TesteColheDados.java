@@ -6,7 +6,7 @@ import org.junit.Test;
 
 import br.com.codifico.util.JsoupUtil;
 
-public class TesteRecolheDados {
+public class TesteColheDados {
 
 	@Test
 	public void test() throws IOException {

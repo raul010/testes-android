@@ -17,6 +17,7 @@ import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
 
+import br.com.codifico.dao.apresentacao.EnderecoResumo;
 import br.com.codifico.dao.apresentacao.FilmeCartaz;
 import br.com.codifico.model.Cinema;
 import br.com.codifico.model.Endereco;
@@ -26,13 +27,12 @@ public class JsoupUtil {
 	private static Calendar gc = new GregorianCalendar();
 
 	public static void fazRequestNosDados(String url) throws IOException {
+		PropertyConfigurator.configure(log4jConfigFile);
 		List<Cinema> listaDeCinemas = new ArrayList<Cinema>();
 
 		Cinema cinema = null;
-		Endereco endereco = null;
+		EnderecoResumo endereco = null;
 		FilmeCartaz filme = null;
-
-		PropertyConfigurator.configure(log4jConfigFile);
 
 		Elements elemsBlocoCinema = null;
 		Elements elemsBlocoFilmes = null;
@@ -58,7 +58,7 @@ public class JsoupUtil {
 			int contFilme = 0;
 			for (Element elemCine : elemsBlocoCinema) {
 				cinema = new Cinema();
-				endereco = new Endereco();
+				endereco = new EnderecoResumo();
 
 				Element cine = elemCine.getElementsByAttribute("data-entities")
 						.first();
@@ -68,13 +68,14 @@ public class JsoupUtil {
 
 				cinema.setNome(formataEArmazena(cine));
 				endereco.setDados(formataEArmazena(enderecoCinema));
-				cinema.setEndereco(endereco);
+				
+				cinema.addEndereco(endereco);
 
 				// Recupera todos filmes de cada cinema iterado
 				Element elementoComFilmes = elemsBlocoFilmes.get(contFilme);
 
 				// Recupera cada filme (de um cinema), para 3 dias
-				for (int i = 0; i <= 6; i++) {
+				for (int i = 0; i <= 8; i++) {
 					String diaDaSemana = diaDaSemana(i);
 
 					Element elemFilmesDia = elementoComFilmes.select(

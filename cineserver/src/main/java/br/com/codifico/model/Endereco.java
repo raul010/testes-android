@@ -1,6 +1,5 @@
 package br.com.codifico.model;
 
-import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
@@ -20,9 +19,6 @@ public class Endereco {
 	@Enumerated(EnumType.STRING)
 	private Estado estado;
 	
-	@Column
-	private String dados;
-	
 	public Cidade getCidade() {
 		return cidade;
 	}
@@ -34,12 +30,6 @@ public class Endereco {
 	}
 	public void setEstado(Estado estado) {
 		this.estado = estado;
-	}
-	public String getDados() {
-		return dados;
-	}
-	public void setDados(String dados) {
-		this.dados = dados;
 	}
 	
 }

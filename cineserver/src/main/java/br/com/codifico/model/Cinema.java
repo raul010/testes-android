@@ -4,24 +4,24 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
-import javax.persistence.OneToOne;
-import javax.persistence.Transient;
 
 import org.springframework.stereotype.Repository;
 
 @Repository
 @Entity
 public class Cinema {
-	@Transient
+	@Column(length=100)
 	private String nome;
     
-	@OneToOne
-	private Endereco endereco;
+	@ManyToMany
+	@JoinTable(name="join_cinema_endereco")
+	private List<Endereco> enderecos;
 	
 	@ManyToMany
 	@JoinTable(name="join_cinema_filme")
@@ -32,6 +32,7 @@ public class Cinema {
 	
 	public Cinema() {
 		filmes = new ArrayList<Filme>();
+		enderecos = new ArrayList<Endereco>();
 	}
 	
 	public void addFilme(Filme filme) {
@@ -50,12 +51,11 @@ public class Cinema {
 		this.nome = nome;
 	}
 
-	public Endereco getEndereco() {
-		return endereco;
+	public List<Endereco> getEnderecos() {
+		return Collections.unmodifiableList(enderecos);
 	}
 
-	public void setEndereco(Endereco endereco) {
-		this.endereco = endereco;
+	public void addEndereco(Endereco endereco) {
+		this.enderecos.add(endereco);
 	}
-
 }

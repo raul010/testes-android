@@ -21,8 +21,6 @@ import br.com.codifico.util.enums.DataApos;
 
 @Entity
 public class FilmeCartaz extends Filme {
-	//@Id está no pai
-	
 	@Enumerated(EnumType.STRING)
 	private DataApos dia;
 	
@@ -55,6 +53,12 @@ public class FilmeCartaz extends Filme {
 			break;
 		case 6:
 			dia = DataApos.SEIS_DIAS;
+			break;
+		case 7:
+			dia = DataApos.SETE_DIAS;
+			break;
+		case 8:
+			dia = DataApos.OITO_DIAS;
 			break;
 
 		default:
