@@ -16,17 +16,20 @@ import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
+import org.springframework.stereotype.Component;
+import org.springframework.transaction.annotation.Transactional;
 
 import br.com.codifico.dao.apresentacao.EnderecoResumo;
 import br.com.codifico.dao.apresentacao.FilmeCartaz;
 import br.com.codifico.model.Cinema;
-import br.com.codifico.model.Endereco;
 
+@Component
 public class JsoupUtil {
 	private static int alternaHeader;
 	private static Calendar gc = new GregorianCalendar();
-
-	public static void fazRequestNosDados(String url) throws IOException {
+	
+	@Transactional
+	public List<Cinema> fazRequestNosDados(String url) throws IOException {
 		PropertyConfigurator.configure(log4jConfigFile);
 		List<Cinema> listaDeCinemas = new ArrayList<Cinema>();
 
@@ -39,7 +42,7 @@ public class JsoupUtil {
 		Document doc = null;
 
 		int qtdeCinema = 0;
-		int pagina = 1;
+		int pagina = 6;
 		boolean ultimaPagina = false;
 
 		while (!ultimaPagina) {
@@ -67,9 +70,9 @@ public class JsoupUtil {
 				imprime(true, cine, enderecoCinema);
 
 				cinema.setNome(formataEArmazena(cine));
-				endereco.setDados(formataEArmazena(enderecoCinema));
+				endereco.setDadosRecebidos(formataEArmazena(enderecoCinema));
 				
-				cinema.addEndereco(endereco);
+				cinema.setEndereco(endereco);
 
 				// Recupera todos filmes de cada cinema iterado
 				Element elementoComFilmes = elemsBlocoFilmes.get(contFilme);
@@ -111,6 +114,7 @@ public class JsoupUtil {
 					}
 				}
 				listaDeCinemas.add(cinema);
+				
 
 				contFilme++;
 			}
@@ -127,7 +131,9 @@ public class JsoupUtil {
 			}
 			System.out.println("Fim da Página " + pagina++ + "\n");
 		}
-		System.out.println(qtdeCinema + " Cinemas");
+		System.err.println(qtdeCinema + " qtdeCinema");
+		System.err.println(listaDeCinemas.size() + " listaDeCinemas.size()");
+		return listaDeCinemas;
 
 	}
 
@@ -158,9 +164,6 @@ public class JsoupUtil {
 			break;
 		case 7:
 			labelDiaDaSemana = "Sábado";
-			break;
-
-		default:
 			break;
 		}
 		return labelDiaDaSemana;

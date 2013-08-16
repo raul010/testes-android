@@ -4,28 +4,23 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
-import javax.annotation.Generated;
-import javax.persistence.CollectionTable;
 import javax.persistence.Column;
 import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
-import javax.persistence.Id;
-
-import org.jsoup.nodes.Element;
 
 import br.com.codifico.model.Filme;
 import br.com.codifico.util.JsoupUtil;
 import br.com.codifico.util.enums.DataApos;
 
-@Entity
+@Entity(name="filme_cartaz")
 public class FilmeCartaz extends Filme {
 	@Enumerated(EnumType.STRING)
 	private DataApos dia;
 	
-	@ElementCollection 
-	@CollectionTable(name="horario_filme")
+	//@ElementCollection 
+	//@CollectionTable(name="horario_filme")
 	private List<String> horarios;
 	
 	@Column(name="dia_semana",length=10,nullable=false)

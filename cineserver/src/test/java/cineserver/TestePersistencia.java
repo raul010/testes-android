@@ -19,12 +19,11 @@ import br.com.codifico.model.Cinema;
 	"classpath*:META-INF/spring/datasource-context-test.xml"
 	})
 public class TestePersistencia {
-	
 	@Autowired
 	Cinema cinema;
 	
 	@PersistenceContext
-    protected EntityManager em;
+    EntityManager em;
 
 
 	@Test
@@ -32,7 +31,6 @@ public class TestePersistencia {
 		//fail("Not yet implemented");
 		System.err.println("em --> " + em);
 		System.err.println("@Autowired [Cinema] --> " + cinema);
-		
 	}
 
 }

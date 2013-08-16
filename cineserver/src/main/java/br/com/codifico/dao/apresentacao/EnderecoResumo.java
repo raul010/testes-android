@@ -5,18 +5,18 @@ import javax.persistence.Entity;
 
 import br.com.codifico.model.Endereco;
 
-@Entity
+@Entity(name="endereco_resumo")
 public class EnderecoResumo extends Endereco {
-	@Column
-	private String dados;
-
-	public String getDados() {
-		return dados;
-	}
-
-	public void setDados(String dados) {
-		this.dados = dados;
-	}
 	
+	@Column(name="dados_recebidos")
+	private String dadosRecebidos;
+
+	public String getDadosRecebidos() {
+		return dadosRecebidos;
+	}
+
+	public void setDadosRecebidos(String dadosRecebidos) {
+		this.dadosRecebidos = dadosRecebidos;
+	}
 	
 }

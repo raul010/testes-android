@@ -13,11 +13,6 @@
 		<!-- </init-param> -->
 		<load-on-startup>1</load-on-startup>
 	</servlet>
-	 <servlet>
-        <servlet-name>example</servlet-name>
-        <servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
-        <load-on-startup>1</load-on-startup>
-    </servlet>
 	<servlet-mapping>
 		<servlet-name>Jersey REST Service</servlet-name>
 		<url-pattern>/*</url-pattern>

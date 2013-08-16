@@ -3,17 +3,19 @@
              xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
              xsi:schemaLocation="http://java.sun.com/xml/ns/persistence http://java.sun.com/xml/ns/persistence/persistence_2_0.xsd"
              version="2.0">
-	<persistence-unit name="cineserver" transaction-type="RESOURCE_LOCAL">
-		<!-- jta-data-source>CineDS</jta-data-source -->
+	<persistence-unit name="cineserver">
 		<provider>org.hibernate.ejb.HibernatePersistence</provider>
-		
+		<jta-data-source>java:jboss/datasources/CineDS</jta-data-source>
+		<!-- <provider>org.hibernate.ejb.HibernatePersistence</provider> -->
 		<class>br.com.codifico.model.Cinema</class>
 		<class>br.com.codifico.model.Filme</class>
 		<class>br.com.codifico.model.Endereco</class>
 		<class>br.com.codifico.dao.apresentacao.FilmeCartaz</class>
 		<class>br.com.codifico.dao.apresentacao.EnderecoResumo</class>
 		<!-- class>br.com.codifico.model.FilmeCartaz</class -->
-		<properties>
+		
+		<!-- shared-cache-mode>ENABLE_SELECTIVE</shared-cache-mode -->
+		<!--  <properties>
 			<property name="javax.persistence.jdbc.driver" value="org.postgresql.Driver" />
 			<property name="hibernate.dialect" value="org.hibernate.dialect.PostgreSQLDialect" />
 			<property name="javax.persistence.jdbc.url" value="jdbc:postgresql://localhost:5432/cineserver" />
@@ -21,10 +23,13 @@
 			<property name="javax.persistence.jdbc.password" value="postgres" />
 			
 			<property name="hibernate.hbm2ddl.auto" value="create" />
-			<property name="hibernate.show_sql" value="true" />
+			<property name="hibernate.show_sql" value="true" /> -->
 			
-		</properties>
-
+			<!-- property name="hibernate.cache.region.factory_class" 
+			value="org.hibernate.cache.ehcache.SingletonEhCacheRegionFactory" / -->
+			
+		<!-- </properties> -->
 
 	</persistence-unit>
+	
 </persistence>

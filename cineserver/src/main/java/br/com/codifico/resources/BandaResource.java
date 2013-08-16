@@ -16,18 +16,18 @@ import javax.ws.rs.Produces;
 
 @Path("/bandas")
 public class BandaResource {
-	static private Map<Integer, Banda> bandasMap;
+	static private Map<Integer, Bandoleiro> bandasMap;
 
 	static {
-		bandasMap = new HashMap<Integer, Banda>();
+		bandasMap = new HashMap<Integer, Bandoleiro>();
 
-		Banda b1 = new Banda();
+		Bandoleiro b1 = new Bandoleiro();
 		b1.setId(1);
 		b1.setNome("Led Zeppelin");
 		b1.setAnoDeFormacao(1968);
 		bandasMap.put(b1.getId(), b1);
 
-		Banda b2 = new Banda();
+		Bandoleiro b2 = new Bandoleiro();
 		b2.setId(2);
 		b2.setNome("AC/DC");
 		b2.setAnoDeFormacao(1973);
@@ -43,14 +43,14 @@ public class BandaResource {
 	@Path("{id}")
 	@GET
 	@Produces("text/xml")
-	public Banda getBandas(@PathParam("id") int id) {
+	public Bandoleiro getBandas(@PathParam("id") int id) {
 		return bandasMap.get(id);
 	}
 
 	@POST
 	@Consumes("text/xml")
 	@Produces("text/plain")
-	public String adicionaBanda(Banda banda) {
+	public String adicionaBanda(Bandoleiro banda) {
 		banda.setId(bandasMap.size() + 1);
 		bandasMap.put(banda.getId(), banda);
 		return banda.getNome() + " adicionado.";
@@ -68,8 +68,8 @@ public class BandaResource {
 	@PUT
 	@Consumes("text/xml")
 	@Produces("text/plain")
-	public String atualizaBanda(Banda banda, @PathParam("id") int id) {
-		Banda atual = bandasMap.get(id);
+	public String atualizaBanda(Bandoleiro banda, @PathParam("id") int id) {
+		Bandoleiro atual = bandasMap.get(id);
 		atual.setNome(banda.getNome());
 		atual.setAnoDeFormacao(banda.getAnoDeFormacao());
 		return banda.getNome() + " atualizada.";
