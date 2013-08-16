@@ -3,6 +3,8 @@ package cineserver;
 import java.io.IOException;
 import java.util.List;
 
+import javax.annotation.Resource;
+
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,7 +25,8 @@ import br.com.codifico.util.JsoupUtil;
 public class TesteColheDados {
 	@Autowired
 	JsoupUtil jsoup;
-	@Autowired
+	
+	@Resource(name="Cinema")
 	CinemaDao cinemaDao;
 	
 	@Test

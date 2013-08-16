@@ -5,13 +5,14 @@
              version="2.0">
 	<persistence-unit name="cineserver">
 		<provider>org.hibernate.ejb.HibernatePersistence</provider>
-		<jta-data-source>java:jboss/datasources/CineDS</jta-data-source>
+		<!-- <jta-data-source>java:jboss/datasources/CineDS</jta-data-source> -->
 		<!-- <provider>org.hibernate.ejb.HibernatePersistence</provider> -->
 		<class>br.com.codifico.model.Cinema</class>
 		<class>br.com.codifico.model.Filme</class>
 		<class>br.com.codifico.model.Endereco</class>
 		<class>br.com.codifico.dao.apresentacao.FilmeCartaz</class>
 		<class>br.com.codifico.dao.apresentacao.EnderecoResumo</class>
+		<class>br.com.codifico.resources.CinemaElement</class>
 		<!-- class>br.com.codifico.model.FilmeCartaz</class -->
 		
 		<!-- shared-cache-mode>ENABLE_SELECTIVE</shared-cache-mode -->

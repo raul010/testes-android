@@ -22,6 +22,7 @@ import org.springframework.transaction.annotation.Transactional;
 import br.com.codifico.dao.apresentacao.EnderecoResumo;
 import br.com.codifico.dao.apresentacao.FilmeCartaz;
 import br.com.codifico.model.Cinema;
+import br.com.codifico.resources.CinemaElement;
 
 @Component
 public class JsoupUtil {
@@ -42,7 +43,7 @@ public class JsoupUtil {
 		Document doc = null;
 
 		int qtdeCinema = 0;
-		int pagina = 6;
+		int pagina = 4;
 		boolean ultimaPagina = false;
 
 		while (!ultimaPagina) {
@@ -60,7 +61,7 @@ public class JsoupUtil {
 			// Recupera cinema
 			int contFilme = 0;
 			for (Element elemCine : elemsBlocoCinema) {
-				cinema = new Cinema();
+				cinema = new CinemaElement();
 				endereco = new EnderecoResumo();
 
 				Element cine = elemCine.getElementsByAttribute("data-entities")

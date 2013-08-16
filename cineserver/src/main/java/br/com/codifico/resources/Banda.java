@@ -1,6 +1,5 @@
 package br.com.codifico.resources;
 
-import javax.xml.bind.annotation.XmlRootElement;
 
 
 public class Banda {  
