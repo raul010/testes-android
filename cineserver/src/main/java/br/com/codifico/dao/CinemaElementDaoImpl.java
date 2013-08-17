@@ -1,9 +1,18 @@
 package br.com.codifico.dao;
 
-import org.springframework.stereotype.Repository;
+import java.util.List;
 
-import br.com.codifico.dao.interfaces.CinemaDao;
+import javax.persistence.EntityManager;
+import javax.persistence.PersistenceContext;
+import javax.persistence.TypedQuery;
+
+import org.springframework.stereotype.Repository;
+import org.springframework.transaction.annotation.Transactional;
+
+import br.com.codifico.dao.interfaces.CinemaElementDao;
 import br.com.codifico.model.Cinema;
+import br.com.codifico.model.element.CinemaElement;
+
 
 /**
  * Ficou obsoleto mas é um bom exemplo de Anotações com Herança
@@ -11,7 +20,18 @@ import br.com.codifico.model.Cinema;
  * @author Raul
  *
  */
-@Repository("CinemaElement")
-public class CinemaElementDaoImpl extends GenericDaoImpl<Cinema> implements CinemaDao {
-
+@Repository
+public class CinemaElementDaoImpl extends GenericDaoImpl<CinemaElement> implements CinemaElementDao {
+	@PersistenceContext
+	private EntityManager em;
+	
+	@Override
+	@Transactional(readOnly=true)
+	public List<CinemaElement> findAll() {
+		String jpql = "SELECT c FROM Cinema c WHERE TYPE(c)= CinemaElement";
+		TypedQuery<CinemaElement> query = em.createQuery(jpql, CinemaElement.class);
+		List<CinemaElement> cinemas = query.getResultList();
+		return cinemas;
+	}
+	
 }

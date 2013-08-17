@@ -22,7 +22,7 @@ import org.springframework.transaction.annotation.Transactional;
 import br.com.codifico.dao.apresentacao.EnderecoResumo;
 import br.com.codifico.dao.apresentacao.FilmeCartaz;
 import br.com.codifico.model.Cinema;
-import br.com.codifico.resources.CinemaElement;
+import br.com.codifico.model.element.CinemaElement;
 
 @Component
 public class JsoupUtil {
@@ -43,7 +43,8 @@ public class JsoupUtil {
 		Document doc = null;
 
 		int qtdeCinema = 0;
-		int pagina = 4;
+		//Default = 0. Para testes, definir ultima pagina do site.
+		int pagina = 6;
 		boolean ultimaPagina = false;
 
 		while (!ultimaPagina) {

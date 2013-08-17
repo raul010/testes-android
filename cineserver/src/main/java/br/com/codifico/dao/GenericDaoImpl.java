@@ -2,7 +2,6 @@ package br.com.codifico.dao;
 
 import java.lang.reflect.ParameterizedType;
 import java.lang.reflect.Type;
-import java.util.Map;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
@@ -24,23 +23,6 @@ public class GenericDaoImpl<T> implements GenericDao<T> {
 		System.err.println("Construtor GenericDaoImpl (grava type) | em = "
 				+ em);
 
-	}
-
-	@Override
-	public long countAll(final Map<?, ?> clausulas) {
-		/*
-		 * final StringBuffer queryString = new StringBuffer(
-		 * "SELECT count(o) from ");
-		 * 
-		 * queryString.append(type.getSimpleName()).append(" o ");
-		 * //queryString.append(this.getQueryClauses(clausulas, null));
-		 * 
-		 * final Query query = this.em.createQuery(queryString.toString());
-		 * 
-		 * return (Long) query.getSingleResult();
-		 */
-		// return incluido;
-		return 0;
 	}
 
 	@Override

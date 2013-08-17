@@ -17,16 +17,19 @@ import br.com.codifico.dao.interfaces.CinemaDao;
 import br.com.codifico.model.Cinema;
 import br.com.codifico.util.JsoupUtil;
 
+//Para o teste rodar, comentar no persistence.xml
+//<provider>org.hibernate.ejb.HibernatePersistence</provider>
+//<jta-data-source>java:/CineDS</jta-data-source>
+
 @RunWith(SpringJUnit4ClassRunner.class)
 @TransactionConfiguration(transactionManager="transactionManager", defaultRollback=false)
-@ContextConfiguration({
-	"classpath*:META-INF/spring/datasource-context-test.xml"
-	})
+@ContextConfiguration(locations={"classpath:datasource-context-test.xml"})
 public class TesteColheDados {
+	
 	@Autowired
 	JsoupUtil jsoup;
 	
-	@Resource(name="Cinema")
+	@Resource(type=CinemaDao.class)
 	CinemaDao cinemaDao;
 	
 	@Test
