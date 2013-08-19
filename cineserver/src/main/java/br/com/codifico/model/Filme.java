@@ -33,8 +33,8 @@ public class Filme {
 	@CollectionTable(name = "genero_filme")
 	@Column(length = 30)
 	private List<Genero> genero;
-
-	@ManyToMany(mappedBy="filmes")
+	
+	@ManyToMany(mappedBy="filmes", targetEntity=Cinema.class)
 	private List<Cinema> cinemas;
 
 	public String getNome() {
@@ -59,7 +59,6 @@ public class Filme {
 	public void setId(int id) {
 		this.id = id;
 	}
-
 	public List<Cinema> getCinemas() {
 		return cinemas;
 	}

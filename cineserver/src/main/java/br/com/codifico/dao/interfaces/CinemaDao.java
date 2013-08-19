@@ -5,6 +5,6 @@ import java.util.List;
 import br.com.codifico.model.Cinema;
 
 public interface CinemaDao extends GenericDao<Cinema>{
-	public List<Cinema> findAll();
+	public List<? extends Cinema> findAll(Class<? extends Cinema> clazz);
 	
 }

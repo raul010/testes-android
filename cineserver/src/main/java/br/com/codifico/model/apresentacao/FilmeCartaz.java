@@ -12,8 +12,6 @@ import javax.persistence.Enumerated;
 import javax.persistence.FetchType;
 import javax.persistence.JoinColumn;
 
-import org.hibernate.annotations.IndexColumn;
-
 import br.com.codifico.model.Filme;
 import br.com.codifico.util.JsoupUtil;
 import br.com.codifico.util.enums.DataApos;
@@ -22,9 +20,8 @@ import br.com.codifico.util.enums.DataApos;
 public class FilmeCartaz extends Filme {
 	@Enumerated(EnumType.STRING)
 	private DataApos dia;
-	//joinColumns=@JoinColumn(name="filme_cartaz_id")
+	
 	@ElementCollection(fetch=FetchType.EAGER)
-	//@IndexColumn(name="Raul")
 	@CollectionTable(name="horario_filme", joinColumns=@JoinColumn(name="filme_cartaz_id"))
 	private List<String> horarios;
 	

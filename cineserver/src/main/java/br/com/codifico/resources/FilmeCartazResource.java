@@ -6,7 +6,6 @@ import java.util.List;
 
 import javax.annotation.Resource;
 
-import org.hibernate.Hibernate;
 import org.springframework.http.MediaType;
 import org.springframework.stereotype.Controller;
 import org.springframework.transaction.annotation.Transactional;
@@ -15,10 +14,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import com.fasterxml.jackson.core.JsonEncoding;
-
 import br.com.codifico.dao.interfaces.CinemaDao;
 import br.com.codifico.model.Cinema;
+import br.com.codifico.model.element.CinemaElement;
 
 @Controller
 @RequestMapping("cinemas")
@@ -29,10 +27,9 @@ public class FilmeCartazResource {
 	
 	@RequestMapping(method=RequestMethod.GET, produces=MediaType.APPLICATION_JSON_VALUE)
 	@Transactional
-	public @ResponseBody List<Cinema> getTudo() {
+	public @ResponseBody List<? extends Cinema> getTudo() {
 
-		List<Cinema> cinemas = cinemaDao.findAll();
-		//Hibernate.initialize(cinemas);
+		List<? extends Cinema> cinemas = cinemaDao.findAll(CinemaElement.class);
 		return cinemas;
 	}
 	@RequestMapping(value="{cidade}", method=RequestMethod.GET, produces=MediaType.APPLICATION_JSON_VALUE)
