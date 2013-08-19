@@ -25,7 +25,7 @@ import org.springframework.stereotype.Repository;
 @Repository
 @Entity
 @Inheritance(strategy=InheritanceType.TABLE_PER_CLASS)
-public class Cinema {
+public class Cinema  {
 	@Column(length=100)
 	private String nome;
     
@@ -40,14 +40,21 @@ public class Cinema {
 		filmes = new ArrayList<Filme>();
 	}
 	
+	/* (non-Javadoc)
+	 * @see br.com.codifico.model.ICinema#addFilme(br.com.codifico.model.Filme)
+	 */
 	public void addFilme(Filme filme) {
 		this.filmes.add(filme);
 	}
 	
-	public List<Filme> getListaDeFilmes() {
+	public List<Filme> getFilmes() {
 		return filmes;
 	}
 	
+	public void setFilmes(List<Filme> filmes) {
+		this.filmes = filmes;
+	}
+
 	public String getNome() {
 		return nome;
 	}

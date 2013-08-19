@@ -23,7 +23,7 @@ import br.com.codifico.util.enums.Genero;
 
 @Entity
 @Inheritance(strategy = InheritanceType.TABLE_PER_CLASS)
-public class Filme {
+public class Filme  {
 	@Column
 	private String nome;
 
@@ -40,14 +40,12 @@ public class Filme {
 	public String getNome() {
 		return nome;
 	}
-
 	public void setNome(String nome) {
 		this.nome = nome;
 	}
 	public List<Genero> getGenero() {
 		return genero;
 	}
-	//@JsonInclude(Include.NON_NULL)
 	public void setGenero(List<Genero> genero) {
 		this.genero = genero;
 	}

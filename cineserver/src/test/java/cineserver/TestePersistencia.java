@@ -1,6 +1,5 @@
 package cineserver;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import javax.annotation.Resource;
@@ -18,7 +17,6 @@ import org.springframework.transaction.annotation.Transactional;
 import br.com.codifico.dao.interfaces.CinemaDao;
 import br.com.codifico.model.Cinema;
 import br.com.codifico.model.element.CinemaElement;
-import br.com.codifico.resources.Banda;
 
 
 @RunWith(SpringJUnit4ClassRunner.class)

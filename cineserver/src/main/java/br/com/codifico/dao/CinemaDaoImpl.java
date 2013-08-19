@@ -42,7 +42,7 @@ public class CinemaDaoImpl extends GenericDaoImpl<Cinema> implements CinemaDao {
 			//Para serializar em JSON deve inicializar a Cinema.filme.cinemas, porem 
 			//nao e necessario inicializar com os dados da base para esta apresentacao
 			for (Cinema cinema : cinemas) {
-				List<Filme> filmes = cinema.getListaDeFilmes();
+				List<Filme> filmes = cinema.getFilmes();
 				for(Filme filme : filmes) {
 					filme.setCinemas(new ArrayList<Cinema>());
 				}
