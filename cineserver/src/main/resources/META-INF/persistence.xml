@@ -8,8 +8,8 @@
 		<class>br.com.codifico.model.Cinema</class>
 		<class>br.com.codifico.model.Filme</class>
 		<class>br.com.codifico.model.Endereco</class>
-		<class>br.com.codifico.dao.apresentacao.FilmeCartaz</class>
-		<class>br.com.codifico.dao.apresentacao.EnderecoResumo</class>
+		<class>br.com.codifico.model.apresentacao.FilmeCartaz</class>
+		<class>br.com.codifico.model.apresentacao.EnderecoResumo</class>
 		<class>br.com.codifico.model.element.CinemaElement</class>
 		<properties>
 			<property name="hibernate.dialect" value="org.hibernate.dialect.PostgreSQLDialect" />

@@ -15,23 +15,18 @@ import org.springframework.test.context.transaction.TransactionConfiguration;
 import org.springframework.transaction.annotation.Transactional;
 
 import br.com.codifico.dao.interfaces.CinemaDao;
-import br.com.codifico.dao.interfaces.CinemaElementDao;
 import br.com.codifico.model.Cinema;
-import br.com.codifico.model.element.CinemaElement;
 
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @TransactionConfiguration(transactionManager="transactionManager", defaultRollback=false)
-@ContextConfiguration(locations={"classpath:datasource-context-test.xml"})
+@ContextConfiguration(locations={"classpath:/META-INF/spring/datasource-context-test.xml"})
 public class TestePersistencia {
 	@Autowired
 	Cinema cinemaTest;
 	
 	@Resource(type=CinemaDao.class)
 	CinemaDao cinemaDao;
-	
-	@Resource(type=CinemaElementDao.class)
-	CinemaElementDao cinemaElementDao;
 	
 	//Ficou obsoleto mas é um bom exemplo de Anotações com Herança
 	//CinemaDao pai dos Repositorios, CinemaDaoImpl e CinemaElementDaoImpl
@@ -55,9 +50,7 @@ public class TestePersistencia {
 	//@Test
 	@Transactional
 	public void recupera() {
-		
 		cinema = cinemaDao.find(100);
-		
 		System.err.println(cinema.getNome());
 	}
 	@Test

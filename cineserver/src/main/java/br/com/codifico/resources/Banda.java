@@ -1,12 +1,17 @@
 package br.com.codifico.resources;
 
+import java.util.List;
 
+enum Enums {
+	A, E, I;
+}
 
 public class Banda {  
 	private String nome; 
 	private int anoDeFormacao; 
 	private int id;
-	
+	private List<String> lista;
+	List<Enums> enums;
 	
 	public String getNome() {
 		return nome;
@@ -25,5 +30,17 @@ public class Banda {
 	}
 	public void setId(int id) {
 		this.id = id;
+	}
+	public List<String> getLista() {
+		return lista;
+	}
+	public void setLista(List<String> lista) {
+		this.lista = lista;
+	}
+	public List<Enums> getEnums() {
+		return enums;
+	}
+	public void setEnums(List<Enums> enums) {
+		this.enums = enums;
 	}
 }

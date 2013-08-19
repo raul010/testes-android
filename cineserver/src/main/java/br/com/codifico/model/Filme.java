@@ -1,6 +1,5 @@
 package br.com.codifico.model;
 
-import java.util.Collections;
 import java.util.List;
 
 import javax.persistence.CollectionTable;
@@ -17,6 +16,9 @@ import javax.persistence.InheritanceType;
 import javax.persistence.ManyToMany;
 import javax.persistence.SequenceGenerator;
 
+import org.hibernate.annotations.LazyCollection;
+import org.hibernate.annotations.LazyCollectionOption;
+
 import br.com.codifico.util.enums.Genero;
 
 @Entity
@@ -27,11 +29,12 @@ public class Filme {
 
 	@Enumerated(EnumType.STRING)
 	@ElementCollection
+	@LazyCollection(LazyCollectionOption.FALSE)
 	@CollectionTable(name = "genero_filme")
 	@Column(length = 30)
 	private List<Genero> genero;
 
-	@ManyToMany(mappedBy = "filmes")
+	@ManyToMany(mappedBy="filmes")
 	private List<Cinema> cinemas;
 
 	public String getNome() {
@@ -41,11 +44,10 @@ public class Filme {
 	public void setNome(String nome) {
 		this.nome = nome;
 	}
-
 	public List<Genero> getGenero() {
 		return genero;
 	}
-
+	//@JsonInclude(Include.NON_NULL)
 	public void setGenero(List<Genero> genero) {
 		this.genero = genero;
 	}
@@ -59,9 +61,8 @@ public class Filme {
 	}
 
 	public List<Cinema> getCinemas() {
-		return Collections.unmodifiableList(cinemas);
+		return cinemas;
 	}
-
 	public void setCinemas(List<Cinema> cinemas) {
 		this.cinemas = cinemas;
 	}

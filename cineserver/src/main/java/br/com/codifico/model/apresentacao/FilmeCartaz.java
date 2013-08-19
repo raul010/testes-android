@@ -1,7 +1,6 @@
-package br.com.codifico.dao.apresentacao;
+package br.com.codifico.model.apresentacao;
 
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 
 import javax.persistence.CollectionTable;
@@ -10,7 +9,10 @@ import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
+import javax.persistence.FetchType;
 import javax.persistence.JoinColumn;
+
+import org.hibernate.annotations.IndexColumn;
 
 import br.com.codifico.model.Filme;
 import br.com.codifico.util.JsoupUtil;
@@ -21,11 +23,12 @@ public class FilmeCartaz extends Filme {
 	@Enumerated(EnumType.STRING)
 	private DataApos dia;
 	//joinColumns=@JoinColumn(name="filme_cartaz_id")
-	@ElementCollection 
+	@ElementCollection(fetch=FetchType.EAGER)
+	//@IndexColumn(name="Raul")
 	@CollectionTable(name="horario_filme", joinColumns=@JoinColumn(name="filme_cartaz_id"))
 	private List<String> horarios;
 	
-	@Column(name="dia_semana",length=10,nullable=false)
+	@Column(name="dia_semana",length=10)
 	private String diaSemana;
 	
 	public FilmeCartaz(int diaIteracao) {
@@ -77,7 +80,7 @@ public class FilmeCartaz extends Filme {
 	}
 	
 	public List<String> getHorarios() {
-		return Collections.unmodifiableList(horarios);
+		return horarios;
 	}
 
 	public void addHorario(String horarios) {

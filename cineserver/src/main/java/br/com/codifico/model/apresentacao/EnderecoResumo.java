@@ -1,4 +1,4 @@
-package br.com.codifico.dao.apresentacao;
+package br.com.codifico.model.apresentacao;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;

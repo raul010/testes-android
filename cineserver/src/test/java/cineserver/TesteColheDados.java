@@ -23,7 +23,7 @@ import br.com.codifico.util.JsoupUtil;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @TransactionConfiguration(transactionManager="transactionManager", defaultRollback=false)
-@ContextConfiguration(locations={"classpath:datasource-context-test.xml"})
+@ContextConfiguration(locations={"classpath:/META-INF/spring/datasource-context-test.xml"})
 public class TesteColheDados {
 	
 	@Autowired

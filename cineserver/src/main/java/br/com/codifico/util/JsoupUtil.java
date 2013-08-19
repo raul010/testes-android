@@ -19,9 +19,9 @@ import org.jsoup.select.Elements;
 import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
 
-import br.com.codifico.dao.apresentacao.EnderecoResumo;
-import br.com.codifico.dao.apresentacao.FilmeCartaz;
 import br.com.codifico.model.Cinema;
+import br.com.codifico.model.apresentacao.EnderecoResumo;
+import br.com.codifico.model.apresentacao.FilmeCartaz;
 import br.com.codifico.model.element.CinemaElement;
 
 @Component
