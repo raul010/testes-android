@@ -49,14 +49,6 @@ public class Filme  {
 	public void setGenero(List<Genero> genero) {
 		this.genero = genero;
 	}
-
-	public int getId() {
-		return id;
-	}
-
-	public void setId(int id) {
-		this.id = id;
-	}
 	public List<Cinema> getCinemas() {
 		return cinemas;
 	}
